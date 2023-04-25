@@ -2,7 +2,7 @@
 class Emulator_8085{
     map<string, string> Memory;
     bool flags[8]
-    pair<string,string>registers[4]//Taking as string pair as 4 register pairs are there
+    pair<string,string>registers[3]//Taking as string pair as 4 register pairs are there
     string accumulator//Main register which will be used for every arithematic operation
     string pc;
     string start;
