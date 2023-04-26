@@ -1,4 +1,4 @@
-#include "HeaderFiles/header.h"
+#include "../HeaderFiles/header.h"
 bool validateRegister(string regPair){
     if(regPair=="B"||regPair=="D"||regPair=="H"||regPair=="M")
         return true;

@@ -1,4 +1,4 @@
-#include "HeaderFiles/header.h"
+#include "../HeaderFiles/header.h"
 
 int registerNumber(string reg){
     if(reg == "B"||reg == "C")  return 0;
