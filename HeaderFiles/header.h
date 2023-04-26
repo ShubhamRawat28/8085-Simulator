@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <bitset>
+#include <sstream>
 using namespace std;
 
 #endif
