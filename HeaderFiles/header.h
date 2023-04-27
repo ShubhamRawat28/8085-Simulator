@@ -10,6 +10,7 @@
 #include <vector>
 #include <bitset>
 #include <sstream>
+#include <algorithm>
 using namespace std;
 
 #endif

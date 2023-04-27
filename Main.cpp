@@ -1,9 +1,10 @@
-#include "header.h"
+#include "../8085-Simulator/HeaderFiles/header.h"
+#include "../8085-Simulator/HeaderFiles/tools.h"
 class Emulator_8085{
     map<string, string> Memory;
-    bool flags[8]
-    pair<string,string>registers[3]//Taking as string pair as 4 register pairs are there
-    string accumulator//Main register which will be used for every arithematic operation
+    bool flags[8];
+    pair<string,string>registers[3];//Taking as string pair as 4 register pairs are there
+    string accumulator;//Main register which will be used for every arithematic operation
     string pc;
     string start;
     vector<string>codeAddress;
@@ -11,9 +12,10 @@ class Emulator_8085{
         Emulator_8085(){
             for(int i=0;i<8;i++)    flags[i] = false; //Set all the flags to zero
             for(int i=0;i<4;i++){
-                registers[i] = {NULL,NULL};
+                registers[i] = {"",""};
             }
-            accumulator = NULL;
+            accumulator = "";
+            pc = "";
             //Set all the register to null in start
         }
 
@@ -27,5 +29,23 @@ class Emulator_8085{
             else    codeAddress.push_back(start);
         }
 
-        
+};
+
+int main(){
+    Emulator_8085 machine;
+    machine.input();
+    string filename("input.txt");
+    vector<string> lines;
+    string line;
+
+    ifstream input_file(filename);
+    if (!input_file.is_open()) {
+        cerr << "Could not open the file - '"
+             << filename << "'" << endl;
+        return EXIT_FAILURE;
+    }
+    while (getline(input_file, line)){
+        lines.push_back(line);
+    }
+    input_file.close();
 }
