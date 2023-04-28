@@ -1,7 +1,10 @@
 #include "../HeaderFiles/header.h"
 
 int registerNumber(string reg){
-    if(reg == "B"||reg == "C")  return 0;
-    if(reg == "D"||reg == "E")  return 1;
-    if(reg == "H"||reg == "L")  return 2;
+    if(reg == "B")  return 0;
+    if(reg == "C")  return 1;
+    if(reg == "D")  return 2;
+    if(reg == "E")  return 3;
+    if(reg == "H")  return 4;
+    if(reg == "L")  return 5;
 }

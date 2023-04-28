@@ -1,5 +1,6 @@
-#include "../HeaderFiles/header.h"
-#include "../HeaderFiles/tools.h"
+#include "./HeaderFiles/header.h"
+#include "./HeaderFiles/tools.h"
+
 bool validateAddress(string address){
     if(address.length()!=4) return false;
     //Valid address 0000 H to FFFF H.

@@ -9,7 +9,7 @@ string compile(string command,pair<string,string>[]regis,bool flag[],map<string,
     vector<string>byteIns = divideInstruction(command);
     if(byteIns[0]=="ADD"){
         cout<<"This is add instruction";
-
+        
         return nextAddress(pc,commandSize);
     }
     else if(byteIns[0]=="SUB")

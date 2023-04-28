@@ -4,8 +4,9 @@
 class Emulator_8085
 {
     map<string, string> Memory;
-    bool flags[8];
+    bool flags[5];
     pair<string, string> registers[3]; // Taking as string pair as 4 register pairs are there
+    string registers[6];
     string accumulator;                // Main register which will be used for every arithematic operation
     string pc;
     string start;
@@ -14,12 +15,12 @@ class Emulator_8085
 public:
     Emulator_8085()
     {
-        for (int i = 0; i < 8; i++)
-            flags[i] = false; // Set all the flags to zero
+        flags[5] = {false}; // Set all the flags to zero
         for (int i = 0; i < 3; i++)
         {
             registers[i] = {"", ""};
         }
+        register[6] = {""};
         accumulator = "";
         pc = "";
         // Set all the register to null in start
@@ -65,7 +66,6 @@ int main()
 {
     Emulator_8085 machine;
     machine.input();
-
     vector<string>instructions = machine.readFile();
     return 0;
 }
