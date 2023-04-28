@@ -1,5 +1,5 @@
-#include "../8085-Simulator/HeaderFiles/header.h"
-#include "../8085-Simulator/HeaderFiles/tools.h"
+#include "./HeaderFiles/header.h"
+#include "./HeaderFiles/tools.h"
 
 class Emulator_8085
 {
@@ -54,7 +54,6 @@ public:
         }
         while (getline(input_file, line))
         {
-            // cout<<line<<endl;
             instructions.push_back(line);
         }
         input_file.close();
@@ -68,8 +67,5 @@ int main()
     machine.input();
 
     vector<string>instructions = machine.readFile();
-    // for(int i=0;i<instructions.size();i++){
-    //     cout<<instructions[i]<<endl;
-    // }
     return 0;
 }

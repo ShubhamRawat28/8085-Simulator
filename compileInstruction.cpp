@@ -1,9 +1,9 @@
-#include "../8085-Simulator/HeaderFiles/header.h"
-#include "../8085-Simulator/HeaderFiles/arithematic.h"
-#include "../8085-Simulator/HeaderFiles/directAdd.h"
-#include "../8085-Simulator/HeaderFiles/indirectAdd.h"
-#include "../8085-Simulator/HeaderFiles/jump.h"
-#include "../8085-Simulator/HeaderFiles/tools.h"
+#include "./HeaderFiles/header.h"
+#include "./HeaderFiles/arithematic.h"
+#include "./HeaderFiles/directAdd.h"
+#include "./HeaderFiles/indirectAdd.h"
+#include "./HeaderFiles/jump.h"
+#include "./HeaderFiles/tools.h"
 
 string compile(string command,pair<string,string>[]regis,bool flag[],map<string,string>&memory,string pc){
     vector<string>byteIns = divideInstruction(command);
