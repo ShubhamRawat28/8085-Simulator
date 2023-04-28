@@ -1,4 +1,5 @@
-#include "../HeaderFiles/header.h";
+#include "../HeaderFiles/header.h"
+#include<stdio.h>
 
 bool validateAddress(string address){
     if(address.length()!=4) return false;
@@ -10,4 +11,8 @@ bool validateAddress(string address){
             return false;
     }
     return true;
+}
+
+int main(){
+    return 0;
 }

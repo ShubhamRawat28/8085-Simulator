@@ -1,4 +1,3 @@
-add B
-jdkf
-akdf
+ADD B
+SUB B
 askdf

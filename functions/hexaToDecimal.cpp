@@ -14,4 +14,4 @@ int hexaToDecimal(string number){
         mul*=16;
     }
     return numberInt;
-}+
+}
