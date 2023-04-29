@@ -1,5 +1,5 @@
 #include "../HeaderFiles/header.h"
-vector<string> divideInstruction(string(instruction))
+vector<string> divideInstruction(string instruction)
 {
     vector<string> code;
     // divide into charr arr
@@ -12,7 +12,4 @@ vector<string> divideInstruction(string(instruction))
         code.push_back(temp);
     }
     return code;
-}
-int main(){
-    getAddress("MOV A,B");
 }

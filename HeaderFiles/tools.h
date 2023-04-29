@@ -11,5 +11,6 @@ int registerNumber(string);
 bool validateData(string);
 string decimalToHexa(int);
 void increaseAddress(string&);
+vector<string>divideInstruction(string);
 
 #endif

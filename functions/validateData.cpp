@@ -4,7 +4,7 @@ bool checkHexa(char x){
     else    return false;
 }
 bool valiateData(string data){
-    if(data.length!=2)  return false;
+    if(data.length()!=2)  return false;
     if(checkHexa(data[0])&&checkHexa(data[1]))  return true;
     return false;
 }
