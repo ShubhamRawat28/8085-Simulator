@@ -4,6 +4,12 @@
 int hexaToDecimal(string);
 bool validateAddress(string);
 vector<string> divideInsturuction(string);
-
+bool validateRegisterPair(string);
+int registerPairNumber(string);
+bool validateRegister(string);
+int registerNumber(string);
+bool validateData(string);
+string decimalToHexa(int);
+void increaseAddress(string&);
 
 #endif
