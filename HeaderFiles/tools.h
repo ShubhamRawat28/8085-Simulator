@@ -12,5 +12,8 @@ bool validateData(string);
 string decimalToHexa(int);
 void increaseAddress(string&);
 vector<string>divideInstruction(string);
+string andHex(string,string);
+string orHex(string,string);
+string exorHex(string,string);
 
 #endif

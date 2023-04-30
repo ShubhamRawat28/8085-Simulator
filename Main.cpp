@@ -4,8 +4,8 @@
 class Emulator_8085
 {
     map<string, string> Memory;
-    bool flags[5];
-    pair<string, string> registers[3]; // Taking as string pair as 4 register pairs are there
+    bool flags[5]; 
+    //sign - zero - auxiliary carry - parity - carry
     string registers[6];
     string accumulator;                // Main register which will be used for every arithematic operation
     string pc;
@@ -20,7 +20,7 @@ public:
         {
             registers[i] = {"", ""};
         }
-        register[6] = {""};
+        registers[6] = {""};
         accumulator = "";
         pc = "";
         // Set all the register to null in start
