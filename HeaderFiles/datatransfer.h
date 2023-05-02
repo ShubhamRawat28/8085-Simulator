@@ -12,5 +12,4 @@ void STA(string,string,map<string,string>&);
 void STAX(string,string&,string,map<string,string>&);
 void XCHG(string,map<string,string>&);
 
-
 #endif

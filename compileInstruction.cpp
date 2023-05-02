@@ -1,8 +1,5 @@
 #include "./HeaderFiles/header.h"
-#include "./HeaderFiles/arithematic.h"
-#include "./HeaderFiles/directAdd.h"
-#include "./HeaderFiles/indirectAdd.h"
-#include "./HeaderFiles/jump.h"
+#include "./HeaderFiles/datatransfer.h"
 #include "./HeaderFiles/tools.h"
 
 string compile(string command,bool flag[],map<string,string>&memory,string pc){

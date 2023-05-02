@@ -100,12 +100,10 @@ int main()
         cout<<"Successfully read the code written in the test file no errors"<<endl;
     }
     else if(mode == "G"){
-
-
+        
     }
     else{
         cout<<"Enter a valid mode Restart the machine"<<endl;
     }
-
     return 0;
 }
