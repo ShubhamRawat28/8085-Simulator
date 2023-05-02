@@ -3,7 +3,7 @@
 
 class Emulator_8085
 {
-    map<string, string> Memory;
+    map<string, string> memory;
     bool flags[5]; 
     //sign - zero - auxiliary carry - parity - carry
     string registers[6];
@@ -11,7 +11,6 @@ class Emulator_8085
     string pc;
     string start;
     vector<string> codeAddress;
-
 public:
     Emulator_8085()
     {
@@ -40,10 +39,9 @@ public:
         else
             codeAddress.push_back(start);
     }
-    vector<string> readFile()
+    void readFile()
     {
         string filename("input.txt");
-        vector<string> instructions;
         string line;
 
         ifstream input_file(filename);
@@ -55,17 +53,59 @@ public:
         }
         while (getline(input_file, line))
         {
-            instructions.push_back(line);
+            
         }
         input_file.close();
-        return instructions;
+    }
+    void display(){
+        cout<<"All the registers currently"<<endl;
+        cout << setw(2) << "A:" << setw(3) << accumulator <<"   ";
+        cout << setw(2) << "B:" << setw(3) << registers[0] << "   ";
+        cout << setw(2) << "C:" << setw(3) << registers[1] << "   ";
+        cout << setw(2) << "D:" << setw(3) << registers[2] << "   ";
+        cout << setw(2) << "E:" << setw(3) << registers[3] << "   ";
+        cout << setw(2) << "H:" << setw(3) << registers[4] << "   ";
+        cout << setw(2) << "L:" << setw(3) << registers[5] << "   ";
+    }
+    void displayMemory(string address){
+        char choice = 'x';
+        cout<<"Enter 1 to exit this mode";
+        while(choice!='1'){
+            cout<<address<<" : "<< memory[address];
+            string updation;
+            cin>>updation;
+            if(validateData(updation))
+                if(updation != "1") memory[address] = updation;
+            else    cout<<"Invalid data value"<<endl;
+            choice = updation[0];
+        }
     }
 };
 
 int main()
 {
     Emulator_8085 machine;
-    machine.input();
-    vector<string>instructions = machine.readFile();
+    cout<<"Enter the mode you want to open"<<endl<<"A - to Enter the code"<<endl<<"M - To access the memory"<<endl<<"G - to run the code";
+    string mode;
+    cin>>mode;
+    if(mode == "M"){
+        cout<<"Enter the memory address you want to check"<<endl;
+        string address;
+        cin>>address;
+        machine.displayMemory(address);
+    }
+    else if(mode == "A"){
+        machine.input();
+        machine.readFile();
+        cout<<"Successfully read the code written in the test file no errors"<<endl;
+    }
+    else if(mode == "G"){
+
+
+    }
+    else{
+        cout<<"Enter a valid mode Restart the machine"<<endl;
+    }
+
     return 0;
 }
