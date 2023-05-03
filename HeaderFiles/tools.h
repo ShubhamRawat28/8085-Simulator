@@ -2,6 +2,7 @@
 #define _TOOLS_H
 
 int hexaToDecimal(string);
+void hexaToDecimal(string,int arr[]);
 bool validateAddress(string);
 vector<string> divideInsturuction(string);
 bool validateRegisterPair(string);
@@ -15,7 +16,6 @@ vector<string>divideInstruction(string);
 string andHex(string,string);
 string orHex(string,string);
 string exorHex(string,string);
-void hexaToDecimal(string pc,int arr[]);
 string hexaAdd(string,string,bool[],bool);
 
 int opcode(string);

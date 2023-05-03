@@ -33,5 +33,8 @@ int hexaToDecimal(string number){
     }
     return numberInt;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d7f68f68f11b09c541d7cf6ea283091922d58d74
