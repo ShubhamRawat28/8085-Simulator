@@ -1,6 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
-void ADD(string arg1,string &accumulutor,string registers[],bool flag[],map<string,string>&memory){
+void ADD(string arg1,string &accumulator,string registers[],bool flag[],map<string,string>&memory){
 	
 	int length=arg1.length();
 	if(length == 1){
@@ -9,7 +9,7 @@ void ADD(string arg1,string &accumulutor,string registers[],bool flag[],map<stri
 				/*Fetches index of register to access array string registers[]*/
 				int registerID = registerNumber(arg1);
 				/*Converting decimal value to string format and storing in accumulator*/
-				accumulutor = hexAdd(registers[registerID],accumulutor,flag,true);
+				accumulator = hexaAdd(registers[registerID],accumulator,flag,true);
 				
 			}
 			else{                         
@@ -20,7 +20,7 @@ void ADD(string arg1,string &accumulutor,string registers[],bool flag[],map<stri
 				if(address >= "0000" && address <= "FFFF"){
 				
 					/*Converting decimal value to string format and storing in accumulator*/
-					registers[0] = hexAdd(memory[address],registers[0],flag,true);				 
+					accumulator = hexaAdd(memory[address],accumulator,flag,true);				 
 				}
 				else{
 					
