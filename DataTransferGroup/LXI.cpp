@@ -6,8 +6,8 @@ void LXI(string var1,string data,string registers[],map<string,string>&memory){
         string address = registers[4]+registers[5];
         memory[address] = data;
     }
-    else if(validateRegisterPair(var1)){
-        int pairIndex = registerPairNumber(var1);
+    else if(validateRegister(var1)){
+        int pairIndex = registerNumber(var1);
         string address = registers[pairIndex] + registers[pairIndex+1];
         memory[address] = data;
     }

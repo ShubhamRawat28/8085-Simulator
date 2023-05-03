@@ -1,4 +1,5 @@
 #include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
 int hexaToDecimal(string number){
     reverse(number.begin(),number.end());

@@ -1,7 +1,8 @@
 #include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
 int opcode(string instruction){
-    string oneByte[]={"ADD","SUB","MOV"};
+    string oneByte[]={"ADD","SUB","MOV","HLT"};
     //Instruction having one byte size
     string twoByte[]={"MVI"};
     //Instruction having two byte size
