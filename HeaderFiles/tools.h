@@ -15,5 +15,7 @@ vector<string>divideInstruction(string);
 string andHex(string,string);
 string orHex(string,string);
 string exorHex(string,string);
+void hexaToDecimal(string pc,int arr[]);
+string hexaAdd(string,string,bool[],bool);
 
 #endif
