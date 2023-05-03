@@ -5,8 +5,7 @@ class Emulator_8085
 {
 public: 
     map<string, string> memory;
-    bool flags[5];
-    //sign - zero - auxiliary carry - parity - carry
+    bool flags[8];
     string registers[6];
     string accumulator;                // Main register which will be used for every arithematic operation
     string pc;
