@@ -96,3 +96,8 @@ SIM - set interrupt mask
 RIM - read interrupt mask
 
 ```
+
+
+## Flag Register
+
+![flag-register](https://media.geeksforgeeks.org/wp-content/uploads/flag-registor-3.png))
