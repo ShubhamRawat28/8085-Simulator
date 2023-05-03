@@ -1,4 +1,5 @@
 #include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
 
 void hexaToDecimal(string pc,int arr[])

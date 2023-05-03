@@ -1,4 +1,6 @@
 #include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
+
 vector<string> divideInstruction(string instruction)
 {
     vector<string> code;

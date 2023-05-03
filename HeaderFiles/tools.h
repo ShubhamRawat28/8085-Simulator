@@ -18,4 +18,7 @@ string exorHex(string,string);
 void hexaToDecimal(string pc,int arr[]);
 string hexaAdd(string,string,bool[],bool);
 
+int opcode(string);
+
+
 #endif
