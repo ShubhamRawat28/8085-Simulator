@@ -8,5 +8,6 @@ int registerNumber(string reg){
     if(reg == "E")  return 3;
     if(reg == "H")  return 4;
     if(reg == "L")  return 5;
+
     return -1;
 }
