@@ -17,6 +17,9 @@ vector<string>divideInstruction(string);
 string andHex(string,string);
 string orHex(string,string);
 string exorHex(string,string);
+string hexaAdd(string,string,bool[],bool);
+
 int opcode(string);
+
 
 #endif
