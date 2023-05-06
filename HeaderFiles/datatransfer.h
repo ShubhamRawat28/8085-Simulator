@@ -1,5 +1,6 @@
 #ifndef _DATATRANSFER_H
 #define _DATATRANSFER_H
+#include "header.h"
 
 void LDA(string,string&,map<string,string>&);
 void LDAX(string,string&,string,map<string,string>&);

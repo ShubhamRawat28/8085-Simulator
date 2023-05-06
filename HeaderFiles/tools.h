@@ -1,5 +1,6 @@
 #ifndef _TOOLS_H
 #define _TOOLS_H
+#include "header.h"
 
 int hexaToDecimal(string);
 void hexaToDecimal(string,int arr[]);
