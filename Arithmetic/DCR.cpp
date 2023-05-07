@@ -14,6 +14,7 @@ void DCR(string arg,string registers[],string accumulator,bool flag[],map<string
 
                 if(arg=="A"){
                     accumulator = hexaSub(accumulator,"01",flag,false);
+					return;
                 }
 				int registerID = registerNumber(arg);
 				registers[registerID] = hexaSub(registers[registerID],"01",flag,false);
@@ -23,7 +24,6 @@ void DCR(string arg,string registers[],string accumulator,bool flag[],map<string
 				string address = "";
 				address = address + registers[4] + registers[5];
 				if(validateAddress(address)){
-				
 					memory[address] = hexaSub(memory[address],"01",flag,false);
 				}
 				else{

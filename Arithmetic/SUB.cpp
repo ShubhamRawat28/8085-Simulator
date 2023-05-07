@@ -1,19 +1,20 @@
-#include "MASTER.h"
-#include "tools.h"
+#include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
-void SUB(string arg1,string registers[],bool flag[],map<string,string>&memory){
+void SUB(string arg1,string &accumulator ,string registers[],bool flag[],map<string,string>&memory){
 	
 	int length=arg1.length();
 	if(length == 1){
 		
-		if(validityRegisters(arg1)){
+		if(validateRegister(arg1)){
 			
 			if(arg1 != "M"){
 			
 				/*Fetches index of register to access array string registers[]*/
 				int registerID = registerNumber(arg1);              
 				/*Converting decimal value to string format and storing in accumulator*/
-				registers[0] = hexSub(registers[registerID],registers[0],flag,true);
+				
+				accumulator = hexaSub(registers[registerID],accumulator,flag,true);
 				
 			}
 			else{                         
@@ -24,7 +25,7 @@ void SUB(string arg1,string registers[],bool flag[],map<string,string>&memory){
 				if(address >= "0000" && address <= "FFFF"){
 				
 					/*Converting decimal value to string format and storing in accumulator*/
-					registers[0] = hexSub(memory[address],registers[0],flag,true);				
+					accumulator = hexaSub(memory[address],accumulator,flag,true);				
 					
 				}
 				else{

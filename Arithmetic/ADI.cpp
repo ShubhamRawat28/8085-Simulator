@@ -1,7 +1,7 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
 
-void ADI(string arg, string accumulator,bool flag[]){
+void ADI(string arg, string &accumulator,bool flag[]){
 
 	int length = arg.length();
 	if(length == 2){

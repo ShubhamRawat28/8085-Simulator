@@ -1,25 +1,25 @@
-#include "MASTER.h"
-#include "tools.h"
+#include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
 void INX(string arg,string registers[],bool flag[]){
 
 	int length = arg.length();
 	if(length == 1){
 	
-		if(validityRegisters(arg)){
+		if(validateRegister(arg)){
 			
 			int registerID = registerNumber(arg);
-			if(registerID == 1 || registerID == 3 || registerID == 5){
+			if(registerID == 0 || registerID == 2 || registerID == 4){
 			
 				string data16bit = "";
 				string temporary = "";	
 				string s1 = "";
 				string s2 = "";
-				if(validityData(registers[registerID]) == true && validityData(registers[registerID+1]) == true){
-					
+				if(validateData(registers[registerID]) == true && validateData(registers[registerID+1]) == true){
 					data16bit = data16bit + registers[registerID] + registers[registerID + 1];
 					//temporary =  hexAdd16bit(data16bit,"0001",flag,false);
-					temporary = increaseAddress(data16bit);
+					increaseAddress(data16bit);
+					 temporary = data16bit;
 					 s1 = s1 + temporary[0] + temporary[1];		
 					 s2 = s2 + temporary[2] + temporary[3];
 					 registers[registerID] = s1; 
@@ -50,3 +50,4 @@ void INX(string arg,string registers[],bool flag[]){
 		/*Error:Invalid Input Argument*/
 	}
 }
+

@@ -1,15 +1,16 @@
-#include "MASTER.h"
-#include "tools.h"
+#include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
-void SUI(string arg, string registers[],bool flag[]){
+void SUI(string arg,string & accumulator, string registers[],bool flag[]){
 
 	int length = arg.length();
 	if(length == 2){
 	
-		if(validityData(arg)){
+	
+		if(validateData(arg)){
 			
 			/*Performs immediate subtraction and stores in accumulator*/
-			registers[0] = hexSub(arg,registers[0],flag,true);
+		accumulator = hexaSub(arg,accumulator,flag,true);
 		}
 		else{
 			
