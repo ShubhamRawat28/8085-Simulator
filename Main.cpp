@@ -17,7 +17,7 @@ public:
     Emulator_8085()
     {
         for (int i = 0; i < 5; i++)    flags[i] = false; // Set all the flags to zero
-        for (int i = 0; i < 6; i++)    registers[i] = "";
+        for (int i = 0; i < 6; i++)    registers[i] = "00";
         accumulator = "";
         pc = "";
         // Set all the register to null in start
@@ -104,19 +104,32 @@ public:
         cout << setw(2) << "E:" << setw(3) << registers[3] << "   ";
         cout << setw(2) << "H:" << setw(3) << registers[4] << "   ";
         cout << setw(2) << "L:" << setw(3) << registers[5] << "   ";
+        cout<<endl;
+        cout << "All the Flags currently" << endl;
+        cout << setw(2) << "Sign :" << setw(3) << flags[0] << "   ";
+        cout << setw(2) << "Zero :" << setw(3) << flags[1] << "   ";
+        cout << setw(2) << "Axuiliary Carry:" << setw(3) << flags[3] << "   ";
+        cout << setw(2) << "Parity:" << setw(3) << flags[5] << "   ";
+        cout << setw(2) << "Carry:" << setw(3) << flags[7] << "   ";
+        cout<<endl;
     }
     void displayMemory(string address) {
-        char choice = 'x';
-        cout << "Enter 1 to exit this mode";
-        while (choice != '1') {
-            cout << address << " : " << memory[address];
+        string choice = "";
+        cout << "Enter -1 to exit this mode"<<endl;
+        while (choice != "-1") {
+            if (memory[address].length() == 0) memory[address] = "00";
+            cout << address << " : " << memory[address]<<" : ";
             string updation;
             cin >> updation;
-            if (validateData(updation))
-                if (updation != "1") memory[address] = updation;
-                else    cout << "Invalid data value" << endl;
+            if (validateData(updation)) {
+                if (updation != "-1") memory[address] = updation;
+            }
+            else {
+                cout << "Invalid data value" << endl;
+                exit(0);
+            }
             increaseAddress(address);
-            choice = updation[0];
+            choice = updation;
         }
     }
 };
@@ -142,6 +155,7 @@ int main()
         }
         else if (mode == "G") {
             //executeInstruction(machine.accumulator, machine.pc, machine.registers, machine.memory, machine.flags);
+            machine.display();
         }
         else {
             cout << "Enter a valid mode Restart the machine" << endl;

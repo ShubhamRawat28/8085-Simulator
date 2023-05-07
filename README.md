@@ -7,14 +7,8 @@ This is a simulation of microprocessor 8085 which include all the functionality 
 you can use these commands inOrder to connect with the object file
 
 ```bash
-
-- g++ -c /path/to/my_code.cpp -o my_code.o
-- g++ -c /path/to/main.cpp -o main.o
-- g++ my_code.o main.o -o my_program
-- ./my_program
-
+mingw32-make -f Makefile
 ```
-
 ```text
 
 Data transfer group:
