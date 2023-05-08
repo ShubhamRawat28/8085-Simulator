@@ -1,4 +1,5 @@
 #include "../HeaderFiles/header.h"
+#include "../HeaderFiles/tools.h"
 
 bool validateRegisterPair(string reg)
 {

@@ -35,6 +35,7 @@ public:
             exit(0);
         }
         pc = start;
+        cout<<pc<<endl;
     }
     void readFile()
     {
@@ -114,13 +115,13 @@ public:
         cout<<endl;
     }
     void displayMemory(string address) {
-        string choice = "";
         cout << "Enter -1 to exit this mode"<<endl;
-        while (choice != "-1") {
+        while (1) {
             if (memory[address].length() == 0) memory[address] = "00";
             cout << address << " : " << memory[address]<<" : ";
             string updation;
             cin >> updation;
+            if(updation == "-1")  break;
             if (validateData(updation)) {
                 if (updation != "-1") memory[address] = updation;
             }
@@ -129,7 +130,6 @@ public:
                 exit(0);
             }
             increaseAddress(address);
-            choice = updation;
         }
     }
 };
@@ -154,7 +154,7 @@ int main()
             cout << "Successfully read the code written in the test file no errors" << endl;
         }
         else if (mode == "G") {
-            //executeInstruction(machine.accumulator, machine.pc, machine.registers, machine.memory, machine.flags);
+            executeInstructions(machine.pc,machine.accumulator, machine.registers, machine.memory, machine.flags);
             machine.display();
         }
         else {

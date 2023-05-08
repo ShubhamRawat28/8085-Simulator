@@ -2,7 +2,7 @@
 #include "../HeaderFiles/tools.h"
 
 int opcode(string instruction){
-    string oneByte[]={"ADD","SUB","MOV","HLT"};
+    string oneByte[]={"ADD","SUB","MOV","HLT","LDAX"};
     //Instruction having one byte size
     string twoByte[]={"MVI"};
     //Instruction having two byte size

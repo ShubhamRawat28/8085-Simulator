@@ -6,7 +6,7 @@ void LDAX(string var1,string& accumulator,string registers[],map<string,string>&
         string address = registers[4]+registers[5];
         accumulator = memory[address];
     }
-    else if(validateRegister(var1)){
+    else if(validateRegisterPair(var1)){
         int pairIndex = registerNumber(var1);
         string address = registers[pairIndex] + registers[pairIndex+1];
         accumulator = memory[address];

@@ -1,3 +1,2 @@
-MOV A,B 
-MOV B,C
-MOV D,E
+LDAX B
+HLT
