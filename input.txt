@@ -1,3 +1,3 @@
-ADD B
-SUB B
-askdf
+MOV A,B 
+MOV B,C
+MOV D,E
