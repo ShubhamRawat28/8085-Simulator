@@ -1,37 +1,44 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
-
 /*Carry flag remains unaffected in INR and DCR operations*/
 
-string hexaAdd(string arg1,string accumulator,bool flag[],bool carry){
 
+string hexSub(string arg1,string arg2,bool flag[],bool carry){
+	
 	string resultant = "";
 	int variable;
-	int value1[5] = {0,0};
-	int value2[5] = {0,0};
+	int parity;
+	int value1[2];
+	int value2[2];
 	int tempAnswer[2];
-	/*Convert hexadecimal data to decimal*/
 	hexaToDecimal(arg1,value1);
-	hexaToDecimal(accumulator,value2);
+	hexaToDecimal(arg2,value2);
 
-	tempAnswer[1] = value1[1] + value2[1];
-	if(tempAnswer[1]>15){
-		tempAnswer[1] = tempAnswer[1]%16;
-		value1[0]++;
-		flag[4] = true;
+	if(value1[1] < value2[1]){
+		
+		tempAnswer[1] = (16+value1[1])-value2[1];
+		--value1[0];
 		}
-	tempAnswer[0] = value1[0] + value2[0];
-	if(tempAnswer[0]>15){
-		tempAnswer[0] = tempAnswer[0]%16;
-		// if(carry == true)
-			flag[0] = true;
+	else{
+		tempAnswer[1] = value1[1] - value2[1];
 	}
+
+	if(value1[0] < value2[0]){
 	
+		if(carry == true)
+			flag[0] = true;
+			
+		tempAnswer[0] = (16+value1[0]-value2[0]);
+		}
+	else
+		tempAnswer[0] = value1[0] - value2[0];
+		
+	 
 	variable = tempAnswer[0]*16 + tempAnswer[1];
 	bitset<8> dataInBinary(variable);
 	/*Setting parity flag*/
-	int parity = dataInBinary.count();
-	if(parity%2 == 0 )
+	parity = dataInBinary.count();
+	if(parity%2 == 0 && parity!=0)
 		flag[2] = true;
 	else
 		flag[2] = false;
@@ -40,16 +47,18 @@ string hexaAdd(string arg1,string accumulator,bool flag[],bool carry){
 	/*Setting zero flag*/
 	if(parity == 0)
 		flag[6] = true;
-	
+	else
+		flag[6] = false;
+		
 	/*Convert decimal data to hexadecimal and store in accumulator*/
 	for(int i = 1;i>=0;--i){
 		
 		if(tempAnswer[i]>=0 && tempAnswer[i]<=9)
-			resultant = char('0' + tempAnswer[i]) + resultant;
+			resultant = char('0'+tempAnswer[i]) + resultant;
 		else if(tempAnswer[i]>=10 && tempAnswer[i]<=15)
 			resultant = (char)('A'+(tempAnswer[i] - 10)) + resultant;
 		}
 	
 	return resultant;
-
+	
 }
