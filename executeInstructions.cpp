@@ -10,11 +10,9 @@ void executeInstructions(string &pc, string &accumulator, string registers[], ma
       while (1)
       {
             vector<string> currCommand = divideInstruction(memory[pc]);
-            for (auto it : currCommand)
-                  cout << it << " ";
-            cout << endl;
-            if (currCommand[0] == "HLT")
-                  break;
+            if (currCommand[0] == "HLT"){
+                   return;
+            }
             else if (currCommand[0] == "MOV")
             {
                   cout << currCommand[1] << " " << currCommand[2] << endl;

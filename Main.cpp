@@ -39,7 +39,7 @@ public:
         }
         pc = start;
     }
-    void readFile()
+    bool readFile()
     {
         string filename("input.txt");
         string line;
@@ -55,7 +55,6 @@ public:
             vector<string> curr = divideInstruction(line);
             string command = curr[0];
             int commandSize = opcode(command);
-            cout<<endl;
             if (commandSize == 1)
             {
                 memory[start] = line;
@@ -69,12 +68,16 @@ public:
                     increaseAddress(start);
                     memory[start] = var;
                 }
-                else
-                {
-                    string data = curr[2];
+                else if(curr.size()>2&&validateData(curr[2])){
                     memory[start] += " " + curr[1];
                     increaseAddress(start);
-                    memory[start] = data;
+                    memory[start] = curr[2];
+                }
+                else
+                {
+                    cout<<"***ERROR***"<<endl;
+                    cout<<"Enter valid data with the "<< command<<"\nTerminating the program"<< endl;
+                    return false;
                 }
             }
             else
@@ -94,8 +97,7 @@ public:
                     increaseAddress(start);
                     memory[start] = half;
                 }
-                else
-                {
+                else if(curr.size()>2&&validateAddress(curr[2])){
                     memory[start] += " " + curr[1];
                     increaseAddress(start);
                     string half = "";
@@ -108,11 +110,17 @@ public:
                     increaseAddress(start);
                     memory[start] = half;
                 }
+                else
+                {
+                    cout<<"***ERROR***"<<endl;
+                    cout<<"Enter valid address with the "<< command<<"\nTerminating the program"<< endl;
+                    return false;
+                }
             }
             increaseAddress(start);
         }
-        cout<<"running..."<<endl;
         input_file.close();
+        return true;
     }
     void printCode(){
         string filename("input.txt");
@@ -179,12 +187,13 @@ public:
 int main()
 {
     Emulator_8085 machine;
+    cout << "Enter the mode you want to open" <<endl
+             << "--------------------------------------------------------------------------------------------------------------------------------------"<<endl
+             << " A - To Enter the code" << " M - To access the memory" << " G - To run the code" << " D - To enter debugger mode"<< " X - To exit the program" <<endl
+             << "--------------------------------------------------------------------------------------------------------------------------------------"<<endl;
     while (1)
     {
-        cout << "Enter the mode you want to open" <<endl
-             << "------------------------------------------------------------------------------------------------------------------------------------------"<<endl
-             << " A - To Enter the code" << " M - To access the memory" << " G - To run the code" << " D - To enter debugger mode"<< " X - To exit the program" <<endl
-             << "------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+        cout << "Enter the mode you want to open" <<endl;
         string mode;
         cin >> mode;
         if (mode == "X")
@@ -202,18 +211,19 @@ int main()
         else if (mode == "A")
         {
             machine.input();
-            machine.readFile();
-            cout << "Successfully read the code from the file"<< endl <<"                  No errors" << endl;
+            if(machine.readFile())  cout << "Successfully read the code from the file"<< endl <<"             -------------\n"<<"             | No errors |" <<endl <<"             -------------"<< endl;
         }
         else if (mode == "G")
         {
             executeInstructions(machine.pc, machine.accumulator, machine.registers, machine.memory, machine.flags);
             display(machine.accumulator,machine.registers,machine.flags);
+            cout<<"Executed the code successfully"<<endl;
         }
         else
         {
             cout << "Enter a valid mode Restart the machine" << endl;
         }
+        cout<<endl;
     }
     return 0;
 }

@@ -80,6 +80,8 @@ void executionDebugger(string &pc, string &accumulator, map<string, string> &mem
 			{
 				if (validateRegister(valueHolder))
 					cout << registers[registerNumber(valueHolder)] << "\n";
+				else if(valueHolder == "A")	
+					cout << accumulator << "\n";
 				else
 					cout << "Error: " << valueHolder << " You have entered invalid register name\n"
 						 << "Type 'help' for more information\n";
