@@ -28,7 +28,7 @@ public:
 
     void input()
     {
-        cout << "Enter a VALID START ADDRESS" << endl;
+        cout << "Enter a VALID START ADDRESS : ";
         cin >> start;
         if (!validateAddress(start))
         {
@@ -55,7 +55,6 @@ public:
             vector<string> curr = divideInstruction(line);
             string command = curr[0];
             int commandSize = opcode(command);
-            for(auto it:curr)   cout<<it<<" ";
             cout<<endl;
             if (commandSize == 1)
             {
@@ -204,7 +203,7 @@ int main()
         {
             machine.input();
             machine.readFile();
-            cout << "Successfully read the code from the file"<< endl <<"No errors" << endl;
+            cout << "Successfully read the code from the file"<< endl <<"                  No errors" << endl;
         }
         else if (mode == "G")
         {

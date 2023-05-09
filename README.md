@@ -2,14 +2,32 @@
 
 This is a simulation of microprocessor 8085 which include all the functionality as well as debugging of the assembly command code for 8085
 
+# This have basically 4 mode in main having -
+A - file read mode or compile mode
+G - run mode or the execution mode
+M - memory mode
+D - DEBUGGING MODE
+
+It's working is just like actual 8085 kit as in A mode it store the respective commands on there particular memory location according to it's byte size, then in G mode it run the commands one by one starting from that memory location and executes all the code, if you want to manipulate the memory location values then you have the M mode.
+# Now comes the actual power of the project D mode debugging this mode is having - further it have 6 modes in it as :
+
+-h or help - this will provide the user all the info related to this mode
+-pc - this will print the current value of program counter register
+-p or print - this will print the value of entered register or memory location by user
+-b or break - this will help to select the breakpoints in the code on the memory location
+-r or run - this will execute the breakpoints present else will normally execute the program
+-s or step - this will run the commands one by one and display the value of register and flags changing after each command
+
 `you may face some issue with the object file`
 
-you can use these commands inOrder to connect with the object file
+# you can use these commands inOrder to connect with the object file
 
 ```bash
 mingw32-make -f Makefile
 ```
 ```text
+
+It supports all these commands -
 
 Data transfer group:
 
@@ -27,17 +45,15 @@ XCHG - exchange
 Arithmetic group:
 ADD - add
 ADI - add immediate
-ADC - add with carry
-ACI - add immediate with carry
+CMP - compare
+DAD - 16 bit addition
 SUB - subtract
 SUI - subtract immediate
-SBB - subtract with borrow
-SBI - subtract immediate with borrow
-INR - increment
-DCR - decrement
+INR - increment register
+DCR - decrement register
 INX - increment register pair
 DCX - decrement register pair
-DAA - decimal adjust accumulator
+
 Logical group:
 ANA - logical AND
 ANI - logical AND immediate
@@ -45,53 +61,15 @@ ORA - logical OR
 ORI - logical OR immediate
 XRA - logical XOR
 XRI - logical XOR immediate
-CMP - compare
+CMP - complement
+
 Branching group:
-JMP - jump
 JNZ - jump if not zero
 JZ - jump if zero
 JNC - jump if no carry
 JC - jump if carry
-JPO - jump if parity odd
-JPE - jump if parity even
-JP - jump if positive
-JM - jump if minus
-CALL - call subroutine
-CNZ - call if not zero
-CZ - call if zero
-CNC - call if no carry
-CC - call if carry
-CPO - call if parity odd
-CPE - call if parity even
-CP - call if positive
-CM - call if minus
-RET - return from subroutine
-RNZ - return if not zero
-RZ - return if zero
-RNC - return if no carry
-RC - return if carry
-RPO - return if parity odd
-RPE - return if parity even
-RP - return if positive
-RM - return if minus
-Stack, I/O, and machine control group:
-PUSH - push register pair onto stack
-POP - pop register pair off of stack
-XTHL - exchange stack top with HL
-SPHL - load SP with HL
-IN - input
-OUT - output
-EI - enable interrupts
-DI - disable interrupts
-RST - restart
-NOP - no operation
-HLT - halt the CPU
-SIM - set interrupt mask
-RIM - read interrupt mask
-
 ```
 
 
-## Flag Register
-
+## Flag Register are set according to this
 ![flag-register](https://media.geeksforgeeks.org/wp-content/uploads/flag-registor-3.png))
