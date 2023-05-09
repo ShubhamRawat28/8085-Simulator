@@ -182,12 +182,10 @@ int main()
     Emulator_8085 machine;
     while (1)
     {
-        cout << "Enter the mode you want to open" << endl
-             << "A - to Enter the code" << endl
-             << "M - To access the memory" << endl
-             << "G - to run the code" << endl
-             << "D - to enter debugger mode" << endl
-             << "X - to exit the program" << endl;
+        cout << "Enter the mode you want to open" <<endl
+             << "------------------------------------------------------------------------------------------------------------------------------------------"<<endl
+             << " A - To Enter the code" << " M - To access the memory" << " G - To run the code" << " D - To enter debugger mode"<< " X - To exit the program" <<endl
+             << "------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
         string mode;
         cin >> mode;
         if (mode == "X")
@@ -206,8 +204,7 @@ int main()
         {
             machine.input();
             machine.readFile();
-            cout << "Successfully read the code written in the test file"<< endl <<"No errors" << endl;
-            machine.printCode();
+            cout << "Successfully read the code from the file"<< endl <<"No errors" << endl;
         }
         else if (mode == "G")
         {
