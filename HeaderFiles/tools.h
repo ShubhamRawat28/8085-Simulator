@@ -22,6 +22,6 @@ string hexaAdd(string,string,bool[],bool);
 string hexaSub(string,string,bool[],bool);
 int opcode(string);
 void executeInstructions(string& pc,string& accumulator,string registers[], map<string, string>& memory, bool flags[]);
-
+string complement(string);
 
 #endif

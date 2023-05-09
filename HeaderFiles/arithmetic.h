@@ -14,5 +14,5 @@ void SUI(string arg,string & , string [],bool []);
 void DCR(string arg,string [],string ,bool [],map<string,string>&);
 void DCX(string arg,string [],bool []);
 void CMP(string arg1, string [], string &, bool [], map<string, string> &);
-
+void CMA(string [],string &accmulator,bool []);
 #endif
