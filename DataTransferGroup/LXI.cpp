@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/datatransfer.h"
 
 void LXI(string var1,string data,string registers[],map<string,string>&memory){
     if(var1=="M"){

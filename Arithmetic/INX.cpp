@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
 
 void INX(string arg,string registers[],bool flag[]){
 

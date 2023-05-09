@@ -1,10 +1,12 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
+
 void ADD(string arg1,string &accumulator,string registers[],bool flag[],map<string,string>&memory){
 	
 	int length=arg1.length();
 	if(length == 1){
-		if(validateAddress(arg1) || validateRegisterPair(arg1)){
+		if(validateRegister(arg1) || validateRegisterPair(arg1)){
 			if(arg1 != "M"){
 				/*Fetches index of register to access array string registers[]*/
 				int registerID = registerNumber(arg1);
@@ -15,8 +17,8 @@ void ADD(string arg1,string &accumulator,string registers[],bool flag[],map<stri
 		
 				/*Fetches data of HL pair*/
 				string address = "";
-				address = address + registers[5] + registers[6];
-				if(address >= "0000" && address <= "FFFF"){
+				address = address + registers[4] + registers[5];
+				if(validateAddress(address)){
 				
 					/*Converting decimal value to string format and storing in accumulator*/
 					accumulator = hexaAdd(memory[address],accumulator,flag,true);				 

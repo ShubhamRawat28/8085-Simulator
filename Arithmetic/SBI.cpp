@@ -1,14 +1,12 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
 
-void SUI(string arg,string & accumulator, string registers[],bool flag[]){
+void SBI(string arg,string & accumulator, string registers[],bool flag[]){
 
 	int length = arg.length();
 	if(length == 2){
-	
-	
 		if(validateData(arg)){
-			
 			/*Performs immediate subtraction and stores in accumulator*/
 		accumulator = hexaSub(arg,accumulator,flag,true);
 		}

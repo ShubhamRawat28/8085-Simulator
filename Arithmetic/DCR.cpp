@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
 
 void DCR(string arg,string registers[],string accumulator,bool flag[],map<string,string>&memory){
 

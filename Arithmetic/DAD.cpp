@@ -1,20 +1,16 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
 
-void DAD(string arg, string registers[], bool flag[])
-{
-
+void DAD(string arg, string registers[], bool flag[]){
 	int length = arg.length();
 	if (length == 1)
 	{
-
 		if (validateRegister(arg))
 		{
-
 			int registerID = registerNumber(arg);
 			if (registerID == 0 || registerID == 2 || registerID == 4)
 			{
-
 				string data16bit = "";
 				string data16bitHL = "";
 				string resultant = "";
@@ -30,7 +26,6 @@ void DAD(string arg, string registers[], bool flag[])
 					hexaToDecimal(arg, value16bitHL);
 					for (int i = 3; i >= 0; i--)
 					{
-
 						int value = value16bit[i] + value16bitHL[i] + carry;
 						if (value >= 16)
 							flag[0] = true;

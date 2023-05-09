@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/arithematic.h"
 
 void DCX(string arg,string registers[],bool flag[]){
 
@@ -9,7 +10,7 @@ void DCX(string arg,string registers[],bool flag[]){
 		if(validateRegister(arg)){
 			
 			int registerID = registerNumber(arg);
-			if(registerID == 1 || registerID == 3 || registerID == 5){
+			if(registerID == 0 || registerID == 2 || registerID == 4){
 			
 				string data16bit = "";
 				string temporary = "";

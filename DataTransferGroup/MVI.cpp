@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/datatransfer.h"
 
 void MVI(string var1,string& accumulator,string data,string registers[],map<string,string>&memory){
     if(!validateData(data)){

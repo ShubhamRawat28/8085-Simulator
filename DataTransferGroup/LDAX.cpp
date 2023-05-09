@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/datatransfer.h"
 
 void LDAX(string var1,string& accumulator,string registers[],map<string,string>&memory){
     if(var1=="M"){

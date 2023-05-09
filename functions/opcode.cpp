@@ -4,9 +4,9 @@
 int opcode(string instruction){
     string oneByte[]={"ADD","SUB","MOV","HLT","LDAX"};
     //Instruction having one byte size
-    string twoByte[]={"MVI"};
+    string twoByte[]={"MVI","ANI","ORI","XRI","ADI","SBI"};
     //Instruction having two byte size
-    string threeByte[]={"STA","LDA"};
+    string threeByte[]={"STA","LDA","JC","JNC","JZ","JNZ","LDAX","LHLD","LXI","SHLD","STAX"};
     //Instruction having three byte size
     stringstream temp(instruction);
     string opcode;

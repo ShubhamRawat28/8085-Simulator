@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/logical.h"
 
 void ORI(string data,string& accumulator,map<string,string>&memory){
     if(validateData(data)){

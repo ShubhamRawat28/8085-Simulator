@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/logical.h"
 
 void ANA(string var,string& accumulator,string registers[],map<string,string>&memory,bool flag[]){
     if(var=="M"){

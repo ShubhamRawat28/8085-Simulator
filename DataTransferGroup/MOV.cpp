@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/datatransfer.h"
 
 void MOV(string var1,string var2,string& accumulator,string registers[],map<string,string>&memory){
     if(!(var1.length()==1&&var2.length()==1)){

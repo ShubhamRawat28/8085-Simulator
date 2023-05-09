@@ -1,24 +1,27 @@
 #include "./HeaderFiles/header.h"
+#include "./HeaderFiles/datatransfer.h"
 #include "./HeaderFiles/tools.h"
+#include "./HeaderFiles/logical.h"
+#include "./HeaderFiles/arithematic.h"
+#include "./HeaderFiles/branching.h"
 
 class Emulator_8085
 {
-public: 
+public:
     map<string, string> memory;
-
-    bool flags[8]; 
-
-    //sign - zero - auxiliary carry - parity - carry
-
+    bool flags[8];
+    // sign - zero - auxiliary carry - parity - carry
     string registers[6];
-    string accumulator;                // Main register which will be used for every arithematic operation
+    string accumulator; // Main register which will be used for every arithematic operation
     string pc;
     string start;
     Emulator_8085()
     {
-        for (int i = 0; i < 5; i++)    flags[i] = false; // Set all the flags to zero
-        for (int i = 0; i < 6; i++)    registers[i] = "00";
-        accumulator = "";
+        for (int i = 0; i < 5; i++)
+            flags[i] = false; // Set all the flags to zero
+        for (int i = 0; i < 6; i++)
+            registers[i] = "00";
+        accumulator = "00";
         pc = "";
         // Set all the register to null in start
     }
@@ -30,102 +33,142 @@ public:
         if (!validateAddress(start))
         {
             cout << "The address entered is invalid or reserved by the processor" << endl
-                << "Please Enter a valid address" << endl
-                << "Program logging off" << endl;
+                 << "Please Enter a valid address" << endl
+                 << "Program logging off" << endl;
             exit(0);
         }
         pc = start;
-        cout<<pc<<endl;
     }
     void readFile()
     {
         string filename("input.txt");
         string line;
-
         ifstream input_file(filename);
         if (!input_file.is_open())
         {
             cerr << "Could not open the file - '"
-                << filename << "'" << endl;
+                 << filename << "'" << endl;
             exit(0);
         }
         while (getline(input_file, line))
         {
-            vector<string>curr = divideInstruction(line);
+            vector<string> curr = divideInstruction(line);
             string command = curr[0];
             int commandSize = opcode(command);
-            if (commandSize == 1) {
+            for(auto it:curr)   cout<<it<<" ";
+            cout<<endl;
+            if (commandSize == 1)
+            {
                 memory[start] = line;
             }
-            else if (commandSize == 2) {
+            else if (commandSize == 2)
+            {
                 memory[start] = command;
                 string var = curr[1];
-                if (validateData(var)) {
+                if (validateData(var))
+                {
                     increaseAddress(start);
                     memory[start] = var;
                 }
-                else {
+                else
+                {
                     string data = curr[2];
                     memory[start] += " " + curr[1];
                     increaseAddress(start);
                     memory[start] = data;
                 }
             }
-            else {
+            else
+            {
                 memory[start] = command;
                 string var = curr[1];
-                if (validateAddress(var)) {
+                if (validateAddress(var))
+                {
                     increaseAddress(start);
-                    string half = ""; half += var[0]; half += var[1];
+                    string half = "";
+                    half += var[0];
+                    half += var[1];
                     memory[start] = half;
-                    half = ""; half += var[2]; half += var[3];
+                    half = "";
+                    half += var[2];
+                    half += var[3];
                     increaseAddress(start);
                     memory[start] = half;
                 }
-                else {
+                else
+                {
                     memory[start] += " " + curr[1];
                     increaseAddress(start);
-                    string half = ""; half += var[0]; half += var[1];
+                    string half = "";
+                    half += var[0];
+                    half += var[1];
                     memory[start] = half;
-                    half = ""; half += var[2]; half += var[3];
+                    half = "";
+                    half += var[2];
+                    half += var[3];
                     increaseAddress(start);
                     memory[start] = half;
                 }
             }
             increaseAddress(start);
         }
+        cout<<"running..."<<endl;
         input_file.close();
     }
-    void display() {
-        cout << "All the registers currently" << endl;
-        cout << setw(2) << "A:" << setw(3) << accumulator << "   ";
-        cout << setw(2) << "B:" << setw(3) << registers[0] << "   ";
-        cout << setw(2) << "C:" << setw(3) << registers[1] << "   ";
-        cout << setw(2) << "D:" << setw(3) << registers[2] << "   ";
-        cout << setw(2) << "E:" << setw(3) << registers[3] << "   ";
-        cout << setw(2) << "H:" << setw(3) << registers[4] << "   ";
-        cout << setw(2) << "L:" << setw(3) << registers[5] << "   ";
-        cout<<endl;
-        cout << "All the Flags currently" << endl;
-        cout << setw(2) << "Sign :" << setw(3) << flags[0] << "   ";
-        cout << setw(2) << "Zero :" << setw(3) << flags[1] << "   ";
-        cout << setw(2) << "Axuiliary Carry:" << setw(3) << flags[3] << "   ";
-        cout << setw(2) << "Parity:" << setw(3) << flags[5] << "   ";
-        cout << setw(2) << "Carry:" << setw(3) << flags[7] << "   ";
-        cout<<endl;
+    void printCode(){
+        string filename("input.txt");
+        string line;
+        ifstream input_file(filename);
+        if (!input_file.is_open())
+        {
+            cerr << "Could not open the file - '"
+                 << filename << "'" << endl;
+            exit(0);
+        }
+        string temp = pc;
+        while (getline(input_file, line))
+        {
+            vector<string> curr = divideInstruction(line);
+            string command = curr[0];
+            int commandSize = opcode(command);
+            cout<<temp<< " : " << line <<endl;
+            if (commandSize == 1)
+            {
+                increaseAddress(temp);
+            }
+            else if (commandSize == 2)
+            {
+                increaseAddress(temp);
+                increaseAddress(temp);
+            }
+            else
+            {
+                increaseAddress(temp);
+                increaseAddress(temp);
+                increaseAddress(temp);
+            }
+        }
+        input_file.close();
     }
-    void displayMemory(string address) {
-        cout << "Enter -1 to exit this mode"<<endl;
-        while (1) {
-            if (memory[address].length() == 0) memory[address] = "00";
-            cout << address << " : " << memory[address]<<" : ";
+    void displayMemory(string address)
+    {
+        cout << "Enter -1 to exit this mode" << endl;
+        while (1)
+        {
+            if (memory[address].length() == 0)
+                memory[address] = "00";
+            cout << address << " : " << memory[address] << " : ";
             string updation;
             cin >> updation;
-            if(updation == "-1")  break;
-            if (validateData(updation)) {
-                if (updation != "-1") memory[address] = updation;
+            if (updation == "-1")
+                break;
+            if (validateData(updation))
+            {
+                if (updation != "-1")
+                    memory[address] = updation;
             }
-            else {
+            else
+            {
                 cout << "Invalid data value" << endl;
                 exit(0);
             }
@@ -137,27 +180,42 @@ public:
 int main()
 {
     Emulator_8085 machine;
-    while (1) {
-        cout << "Enter the mode you want to open" << endl << "A - to Enter the code" << endl << "M - To access the memory" << endl << "G - to run the code" << endl;
+    while (1)
+    {
+        cout << "Enter the mode you want to open" << endl
+             << "A - to Enter the code" << endl
+             << "M - To access the memory" << endl
+             << "G - to run the code" << endl
+             << "D - to enter debugger mode" << endl
+             << "X - to exit the program" << endl;
         string mode;
         cin >> mode;
-        if (mode == "X") break;
-        if (mode == "M") {
+        if (mode == "X")
+            break;
+        if (mode == "M")
+        {
             cout << "Enter the memory address you want to check" << endl;
             string address;
             cin >> address;
             machine.displayMemory(address);
         }
-        else if (mode == "A") {
+        else if(mode == "D"){
+            executionDebugger(machine.pc,machine.accumulator,machine.memory,machine.flags,machine.registers);
+        }
+        else if (mode == "A")
+        {
             machine.input();
             machine.readFile();
-            cout << "Successfully read the code written in the test file no errors" << endl;
+            cout << "Successfully read the code written in the test file"<< endl <<"No errors" << endl;
+            machine.printCode();
         }
-        else if (mode == "G") {
-            executeInstructions(machine.pc,machine.accumulator, machine.registers, machine.memory, machine.flags);
-            machine.display();
+        else if (mode == "G")
+        {
+            executeInstructions(machine.pc, machine.accumulator, machine.registers, machine.memory, machine.flags);
+            display(machine.accumulator,machine.registers,machine.flags);
         }
-        else {
+        else
+        {
             cout << "Enter a valid mode Restart the machine" << endl;
         }
     }

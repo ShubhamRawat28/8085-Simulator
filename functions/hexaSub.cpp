@@ -3,8 +3,7 @@
 /*Carry flag remains unaffected in INR and DCR operations*/
 
 
-string hexSub(string arg1,string arg2,bool flag[],bool carry){
-	
+string hexaSub(string arg2,string arg1,bool flag[],bool carry){
 	string resultant = "";
 	int variable;
 	int parity;
@@ -60,5 +59,4 @@ string hexSub(string arg1,string arg2,bool flag[],bool carry){
 		}
 	
 	return resultant;
-	
 }

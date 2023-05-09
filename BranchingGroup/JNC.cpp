@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/branching.h"
 
 void JNC(string address,string& pc,bool flag[]){
     if(!validateAddress(address)){
@@ -10,8 +11,6 @@ void JNC(string address,string& pc,bool flag[]){
         pc = address;
     }
     else{
-        increaseAddress(pc);
-        increaseAddress(pc);
         increaseAddress(pc);
     }//Increase the current address and move to next command;
 }

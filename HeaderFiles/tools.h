@@ -18,10 +18,13 @@ vector<string>divideInstruction(string);
 string andHex(string,string);
 string orHex(string,string);
 string exorHex(string,string);
-string hexaAdd(string,string,bool[],bool);
-string hexaSub(string,string,bool[],bool);
+string hexaAdd(string,string,bool temp[],bool);
+string hexaSub(string,string,bool temp[],bool);
 int opcode(string);
-void executeInstructions(string& pc,string& accumulator,string registers[], map<string, string>& memory, bool flags[]);
+void executionDebugger(string& pc,string& accumulator,map<string,string>&memory,bool flags[],string registers[]);
+void executeInstructions(string&,string&,string registers[], map<string, string>&, bool flags[]);
+void execute(string&,string&,string registers[], map<string, string>&, bool flags[]);
+void display(string& accumulator,string registers[],bool flags[]);
 
 
 #endif

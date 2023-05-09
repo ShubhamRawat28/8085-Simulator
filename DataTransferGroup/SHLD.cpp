@@ -1,5 +1,6 @@
 #include "../HeaderFiles/header.h"
 #include "../HeaderFiles/tools.h"
+#include "../HeaderFiles/datatransfer.h"
 
 void SHLD(string address,string& accumulator,string registers[],map<string,string>&memory){
     if(!validateAddress(address)){
