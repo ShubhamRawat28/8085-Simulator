@@ -73,3 +73,8 @@ JC - jump if carry
 
 ## Flag Register are set according to this
 ![flag-register](https://media.geeksforgeeks.org/wp-content/uploads/flag-registor-3.png))
+
+
+## 8085 Architecture
+
+![8085-architecture](https://blogger.googleusercontent.com/img/a/AVvXsEgQ58gn_gYvTdVsW4PKTXAGgCiivwYZrySJLR9Zv2PvhNiIQ-C7XWWznz4-1wFVP0ozP9oNrn6c2i98T6ZeV3w-jFQBpb4OyQqiZPFVXiIGg7H9ZRStDomHeLKo9Vv87pTq3PaHWsl8BZ4LOFSn6J4duQc8jAxGesDHBsUX5L5jRsuntLeh2x5tnlBJ=s16000)
